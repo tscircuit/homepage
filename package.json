@@ -7,8 +7,11 @@
     "@chakra-ui/react": "^2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
+    "email-validator": "^2.0.4",
     "framer-motion": "^10.12.2",
-    "next": "^13.3.0"
+    "next": "^13.3.0",
+    "react-hot-toast": "^2.4.0",
+    "react-use-intercom": "^5.0.0"
   },
   "devDependencies": {
     "@types/node": "18.15.11",

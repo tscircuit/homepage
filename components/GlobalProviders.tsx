@@ -3,6 +3,8 @@
 import { ChakraProvider } from "@chakra-ui/react"
 import { extendTheme } from "@chakra-ui/react"
 import { theme as chakraProTheme } from "@chakra-ui/pro-theme"
+import { IntercomProvider } from "react-use-intercom"
+import { Toaster } from "react-hot-toast"
 
 const theme = extendTheme({
   ...chakraProTheme,
@@ -24,5 +26,8 @@ const theme = extendTheme({
 })
 
 export const GlobalProviders = ({ children }: { children: any }) => (
-  <ChakraProvider theme={theme}>{children}</ChakraProvider>
+  <IntercomProvider appId="yyavprka" autoBoot>
+    <ChakraProvider theme={theme}>{children}</ChakraProvider>
+    <Toaster />
+  </IntercomProvider>
 )
