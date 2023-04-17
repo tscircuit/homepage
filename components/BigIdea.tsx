@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react"
 import { FiArrowRight } from "react-icons/fi"
 import { BsStars } from "react-icons/bs"
-import { FaAccessibleIcon } from "react-icons/fa"
+import { TbTopologyComplex } from "react-icons/tb"
 import { IoRocketSharp } from "react-icons/io5"
 
 const features = [
@@ -31,7 +31,7 @@ const features = [
   {
     name: "Schematics and PCBs, together.",
     description: `tscircuit simultaneously renders to schematics and PCBs, allowing more information to be embedded when packaging components.`,
-    icon: FaAccessibleIcon,
+    icon: TbTopologyComplex,
   },
 ]
 
