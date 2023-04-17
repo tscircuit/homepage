@@ -17,6 +17,7 @@ import {
 import * as emailValidator from "email-validator"
 import { useIntercom } from "react-use-intercom"
 import { toast } from "react-hot-toast"
+import { BigIdea } from "components/BigIdea"
 
 export default () => {
   const { update } = useIntercom()
@@ -27,13 +28,20 @@ export default () => {
         <Stack spacing={{ base: "8", md: "10" }} align="center">
           <Stack spacing={{ base: "4", md: "6" }} textAlign="center">
             <Stack spacing="3">
-              <Text
-                fontSize={{ base: "sm", md: "md" }}
-                fontWeight="medium"
-                color="accent"
-              >
-                tscircuit
-              </Text>
+              <Box mb={16}>
+                <Text
+                  display="inline-block"
+                  p={4}
+                  bg="accent"
+                  fontSize="2xl"
+                  fontWeight="bold"
+                  color="white"
+                  borderRadius={16}
+                  shadow="xl"
+                >
+                  tscircuit
+                </Text>
+              </Box>
               <Heading size={{ base: "md", md: "lg" }} fontWeight="semibold">
                 Build Circuits with React
               </Heading>
@@ -89,6 +97,7 @@ export default () => {
           </chakra.form>
         </Stack>
       </Container>
+      <BigIdea />
     </Box>
   )
 }
