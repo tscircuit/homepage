@@ -10,6 +10,7 @@
     "email-validator": "^2.0.4",
     "framer-motion": "^10.12.2",
     "next": "^13.3.0",
+    "react-ace": "^10.1.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.8.0",
     "react-use-intercom": "^5.0.0"

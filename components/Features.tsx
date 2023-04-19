@@ -15,6 +15,7 @@ import { FiArrowRight } from "react-icons/fi"
 import { BsStars } from "react-icons/bs"
 import { TbTopologyComplex } from "react-icons/tb"
 import { IoRocketSharp } from "react-icons/io5"
+import { CircuitEditor } from "./CircuitEditor"
 
 const features = [
   {
@@ -38,7 +39,7 @@ const features = [
 ]
 
 export const Features = () => (
-  <Container py={{ base: "16", md: "24" }}>
+  <Container py={14}>
     <Stack spacing={{ base: "12", md: "16" }}>
       <Stack
         direction={{ base: "column", md: "row" }}
@@ -82,14 +83,8 @@ export const Features = () => (
             </Stack>
           ))}
         </Stack>
-        <Box width="full" overflow="hidden">
-          {/* <Image
-          maxW="100%"
-          minH={{ base: "100%", lg: "560px" }}
-          objectFit="cover"
-          src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-          alt="Developer"
-        /> */}
+        <Box width="full">
+          <CircuitEditor />
         </Box>
       </Stack>
     </Stack>

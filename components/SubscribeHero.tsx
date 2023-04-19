@@ -46,9 +46,17 @@ export const SubscribeHero = () => {
               </Heading>
             </Stack>
             <Text color="muted" fontSize={{ base: "lg", md: "xl" }} maxW="3xl">
-              Hi I'm <Link href="https://twitter.com/seveibar">@seveibar</Link>,
-              I'm building{" "}
-              <Link href="https://github.com/tscircuit/builder">tscircuit</Link>{" "}
+              Hi I'm{" "}
+              <Link textDecor="underline" href="https://twitter.com/seveibar">
+                @seveibar
+              </Link>
+              , I'm building{" "}
+              <Link
+                textDecor="underline"
+                href="https://github.com/tscircuit/builder"
+              >
+                tscircuit
+              </Link>{" "}
               to allow PCB/Circuit design with React.
               <br />
               <br />
