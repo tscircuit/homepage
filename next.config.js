@@ -1,5 +1,6 @@
 module.exports = {
   experimental: {
-    appDir: true
+    appDir: true,
+    esmExternals: "loose"
   }
 }
