@@ -8,7 +8,7 @@ import useMouseMatrixTransform from "use-mouse-matrix-transform"
 
 const defaultTransform = compose(translate(400, 300), scale(40, 40))
 
-export default ({ soup }: { soup: Soup }) => {
+export default ({ soup }: { soup: any }) => {
   const [ref, refDimensions] = useMeasure()
   const [transform, setTransform] = useState(defaultTransform)
   const { ref: transformRef } = useMouseMatrixTransform({

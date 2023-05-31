@@ -15,6 +15,7 @@ import { remove_me_prerendered_elements } from "lib/tmp/prerendered-elements"
 import { CodeEditor } from "./CodeEditor"
 import { CanvasElementsRenderer as PCBViewer } from "@tscircuit/pcb-viewer"
 import { useState } from "react"
+import PCBLayout from "./PCBLayout"
 
 const defaultCode = `
 
@@ -103,7 +104,9 @@ export const CircuitEditor = () => {
             </Box>
           </TabPanel>
           <TabPanel>
-            <PCBViewer elements={remove_me_prerendered_elements as any} />
+            <PCBLayout
+              soup={{ elements: remove_me_prerendered_elements as any }}
+            />
           </TabPanel>
           <TabPanel>4</TabPanel>
         </TabPanels>
