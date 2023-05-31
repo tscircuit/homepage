@@ -13,6 +13,7 @@ import {
 import { Schematic } from "@tscircuit/schematic-viewer"
 import { remove_me_prerendered_elements } from "lib/tmp/prerendered-elements"
 import { CodeEditor } from "./CodeEditor"
+import { CanvasElementsRenderer as PCBViewer } from "@tscircuit/pcb-viewer"
 import { useState } from "react"
 
 const defaultCode = `
@@ -101,7 +102,9 @@ export const CircuitEditor = () => {
               <Schematic elements={remove_me_prerendered_elements} />
             </Box>
           </TabPanel>
-          <TabPanel>3</TabPanel>
+          <TabPanel>
+            <PCBViewer elements={remove_me_prerendered_elements as any} />
+          </TabPanel>
           <TabPanel>4</TabPanel>
         </TabPanels>
       </Tabs>
