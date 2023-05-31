@@ -90,7 +90,14 @@ export const CircuitEditor = () => {
             <CodeEditor initialCode={code} />
           </TabPanel>
           <TabPanel>
-            <Box position="relative">
+            <Box
+              position="relative"
+              overflow={"hidden"}
+              width="100%"
+              height={400}
+              userSelect={"none"}
+              cursor="grab"
+            >
               <Schematic elements={remove_me_prerendered_elements} />
             </Box>
           </TabPanel>
