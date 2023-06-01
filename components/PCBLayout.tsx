@@ -8,7 +8,7 @@ import useMouseMatrixTransform from "use-mouse-matrix-transform"
 
 const defaultTransform = compose(translate(400, 300), scale(40, 40))
 
-export default ({ soup }: { soup: any }) => {
+export default ({ elements }: { elements: any }) => {
   const [ref, refDimensions] = useMeasure()
   const [transform, setTransform] = useState(defaultTransform)
   const { ref: transformRef } = useMouseMatrixTransform({
@@ -20,16 +20,16 @@ export default ({ soup }: { soup: any }) => {
       <div ref={ref as any}>
         <PCBViewer.CanvasElementsRenderer
           key={refDimensions.width}
-          elements={soup.elements as any}
-          transform={transform}
-          height={600}
+          elements={elements as any}
+          transform={transform as any}
+          height={300}
           width={refDimensions.width}
           grid={{
             spacing: 1,
             view_window: {
               left: 0,
               right: refDimensions.width || 500,
-              top: 600,
+              top: 300,
               bottom: 0,
             },
           }}

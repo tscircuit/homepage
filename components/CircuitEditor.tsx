@@ -105,7 +105,11 @@ export const CircuitEditor = () => {
           </TabPanel>
           <TabPanel>
             <PCBLayout
-              soup={{ elements: remove_me_prerendered_elements as any }}
+              elements={
+                remove_me_prerendered_elements.filter((elm) =>
+                  elm.type.startsWith("pcb_")
+                ) as any
+              }
             />
           </TabPanel>
           <TabPanel>4</TabPanel>
