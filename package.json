@@ -19,7 +19,7 @@
     "react-icons": "^4.8.0",
     "react-use": "^17.4.0",
     "react-use-intercom": "^5.0.0",
-    "use-mouse-matrix-transform": "^1.0.2"
+    "use-mouse-matrix-transform": "^1.0.4"
   },
   "devDependencies": {
     "@types/node": "18.15.11",
