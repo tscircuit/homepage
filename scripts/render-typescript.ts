@@ -1,4 +1,5 @@
-import * as esbuild from "esbuild-wasm"
+// import * as esbuild from "esbuild-wasm"
+import * as ts from "typescript"
 
 const typescript_to_render = `
 export const MyCircuit = () => (
@@ -50,10 +51,21 @@ export default MyCircuit
 `
 
 async function main() {
-  await esbuild.initialize({
-    wasmURL: "./node_modules/esbuild-wasm/esbuild.wasm",
+  const result = ts.transpileModule(typescript_to_render, {
+    compilerOptions: {
+      module: ts.ModuleKind.NodeNext,
+      jsx: ts.JsxEmit.ReactJSX,
+    },
   })
-  console.log(await esbuild.transform(typescript_to_render))
+
+  // TODO - we need to add the ability to add jsx to the file
+  // before evaling
+  console.log(result.outputText)
+
+  // await esbuild.initialize({
+  //   wasmURL: "./node_modules/esbuild-wasm/esbuild.wasm",
+  // })
+  // console.log(await esbuild.transform(typescript_to_render))
 }
 
 main()
