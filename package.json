@@ -24,8 +24,10 @@
   "devDependencies": {
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
+    "esbuild-wasm": "^0.17.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "tsx": "^3.12.7",
     "typescript": "^5.0.4"
   }
 }
