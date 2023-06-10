@@ -1,13 +1,8 @@
 "use client"
 
-import { useState } from "react"
-import { Box } from "@chakra-ui/react"
-import { useIntercom } from "react-use-intercom"
-import { BigIdea } from "components/BigIdea"
-import { SubscribeHero } from "components/SubscribeHero"
-import { Features } from "components/Features"
+import ReactMarkdown from "react-markdown"
 
-const text = `
+const markdownContent = `
 
 # Mission
 
@@ -29,7 +24,7 @@ There are 3 core fundamental tools that must be in place:
 * PCB and Schematic Rendering
 * 
 
-# Step 2: Automatic Layout
+# Step 2: Automatic Layout & Tracing
 
 Tscircuit will be critized for lacking visual tools that have traditional
 been used to constrain and adjust circuits. We believe that these visual
@@ -41,6 +36,7 @@ To demonstrate layout capabilities we should have an implementation of automatic
 layout tooling that covers:
 * Automatic "wiggling" of pcb components to fit together without manual effort
 * ASCII-diagram layout
+* Predictable automatic PCB traces
 
 # Step 3: Simplify Development Tools
 
@@ -117,5 +113,9 @@ a strong ecosystem with community-driven innovation.
 `.trim()
 
 export default () => {
-  return <></>
+  return (
+    <>
+      <ReactMarkdown>{markdownContent}</ReactMarkdown>
+    </>
+  )
 }
