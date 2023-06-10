@@ -1,5 +1,8 @@
 "use client"
 
+import { Box, Container, Flex, HStack, Link, VStack } from "@chakra-ui/react"
+import { Nav } from "components/Nav"
+import { TSCircuitLogo } from "components/TSCircuitLogo"
 import ReactMarkdown from "react-markdown"
 
 const markdownContent = `
@@ -21,8 +24,8 @@ to circuit layout, error analysis, and pre-manufacture debugging.
 There are 3 core fundamental tools that must be in place:
 
 * User-editable Layout System for Schematic and PCB
-* PCB and Schematic Rendering
-* 
+* PCB and Schematic Rendering with Basic Debug Tooling
+* Robust packaging, type, and build support
 
 # Step 2: Automatic Layout & Tracing
 
@@ -114,8 +117,32 @@ a strong ecosystem with community-driven innovation.
 
 export default () => {
   return (
-    <>
-      <ReactMarkdown>{markdownContent}</ReactMarkdown>
-    </>
+    <Box bg="bg-surface">
+      <Container>
+        <Nav />
+        <Box
+          sx={{
+            "& h1": {
+              fontSize: 32,
+              mt: 8,
+              mb: 4,
+            },
+            "& ul li": {
+              ml: 8,
+              my: 0.5,
+            },
+          }}
+        >
+          <VStack pt={16} pb={12}>
+            <TSCircuitLogo />
+          </VStack>
+          <Flex align="center" justifyContent="center">
+            <Box maxW={800}>
+              <ReactMarkdown>{markdownContent}</ReactMarkdown>
+            </Box>
+          </Flex>
+        </Box>
+      </Container>
+    </Box>
   )
 }

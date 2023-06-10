@@ -17,6 +17,7 @@ import {
 import * as emailValidator from "email-validator"
 import { toast } from "react-hot-toast"
 import { useIntercom } from "react-use-intercom"
+import { TSCircuitLogo } from "./TSCircuitLogo"
 
 export const SubscribeHero = () => {
   const { update } = useIntercom()
@@ -28,18 +29,7 @@ export const SubscribeHero = () => {
           <Stack spacing={{ base: "4", md: "6" }} textAlign="center">
             <Stack spacing="3">
               <Box mb={16}>
-                <Text
-                  display="inline-block"
-                  p={4}
-                  bg="accent"
-                  fontSize="2xl"
-                  fontWeight="bold"
-                  color="white"
-                  borderRadius={16}
-                  shadow="xl"
-                >
-                  tscircuit
-                </Text>
+                <TSCircuitLogo />
               </Box>
               <Heading size={{ base: "md", md: "lg" }} fontWeight="semibold">
                 Build Circuits with React
