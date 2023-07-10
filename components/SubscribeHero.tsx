@@ -50,7 +50,10 @@ export const SubscribeHero = () => {
               to allow PCB/Circuit design with React.
               <br />
               <br />
-              Join our mailing list to get updates on the project.
+              Follow Us On Twitter{" "}
+              <Link textDecor="underline" href="https://twitter.com/tscircuit ">
+                @tscircuit
+              </Link>
             </Text>
           </Stack>
           <chakra.form width={{ base: "full", md: "md" }}>
@@ -59,37 +62,6 @@ export const SubscribeHero = () => {
               spacing="4"
               shouldWrapChildren
             >
-              <FormControl>
-                <Input
-                  size="lg"
-                  placeholder="Enter your email"
-                  type="email"
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </FormControl>
-              <Button
-                onClick={() =>
-                  toast.promise(
-                    (async () => {
-                      if (!emailValidator.validate(email)) {
-                        throw new Error("invalid email")
-                      }
-                      await update({ email })
-                    })(),
-                    {
-                      error: "Failed to subscribe",
-                      success: "Subscribed!",
-                      loading: "Subscribing...",
-                    }
-                  )
-                }
-                variant="primary"
-                size="lg"
-                width="full"
-              >
-                Subscribe
-              </Button>
             </Stack>
           </chakra.form>
         </Stack>
