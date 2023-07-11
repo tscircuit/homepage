@@ -50,9 +50,8 @@ export const SubscribeHero = () => {
               to allow PCB/Circuit design with React.
               <br />
               <br />
-              Follow Us On Twitter{" "}
               <Link textDecor="underline" href="https://twitter.com/tscircuit ">
-                @tscircuit
+                Follow @tscircuit on Twitter
               </Link>
             </Text>
           </Stack>
