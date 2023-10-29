@@ -12,7 +12,7 @@
     "@tscircuit/builder": "^1.5.0",
     "@tscircuit/pcb-viewer": "^1.2.8",
     "@tscircuit/react-fiber": "^1.0.6",
-    "@tscircuit/schematic-viewer": "^0.0.9",
+    "@tscircuit/schematic-viewer": "^1.0.18",
     "email-validator": "^2.0.4",
     "framer-motion": "^10.12.2",
     "next": "^13.3.0",
@@ -22,7 +22,7 @@
     "react-markdown": "^8.0.7",
     "react-use": "^17.4.0",
     "react-use-intercom": "^5.0.0",
-    "use-mouse-matrix-transform": "^1.0.4"
+    "use-mouse-matrix-transform": "^1.1.5"
   },
   "devDependencies": {
     "@types/node": "18.15.11",

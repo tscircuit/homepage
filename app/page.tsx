@@ -7,6 +7,7 @@ import { BigIdea } from "components/BigIdea"
 import { SubscribeHero } from "components/SubscribeHero"
 import { Features } from "components/Features"
 import { Nav } from "components/Nav"
+import { PlaygroundPanels } from "components/PlaygroundPanels"
 
 export default () => {
   return (
@@ -15,6 +16,7 @@ export default () => {
       <SubscribeHero />
       <BigIdea />
       <Features />
+      <PlaygroundPanels />
     </>
   )
 }

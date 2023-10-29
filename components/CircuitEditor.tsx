@@ -17,7 +17,7 @@ import { CanvasElementsRenderer as PCBViewer } from "@tscircuit/pcb-viewer"
 import { useState } from "react"
 import PCBLayout from "./PCBLayout"
 
-const defaultCode = `
+export const defaultCode = `
 
 export const MyCircuit = () => (
   <>

@@ -7,7 +7,7 @@ const AceEditor = dynamic(
     const ace = await import("react-ace")
     await import("ace-builds/src-noconflict/mode-tsx")
     await import("ace-builds/src-noconflict/ext-language_tools")
-    await import("ace-builds/src-noconflict/theme-monokai")
+    await import("ace-builds/src-noconflict/theme-cloud9_day")
     return ace
   },
   {
@@ -20,9 +20,10 @@ const AceEditor = dynamic(
 export const CodeEditor = ({ initialCode }: { initialCode: string }) => {
   return (
     <AceEditor
+      width="100%"
       mode="tsx"
       defaultValue={initialCode}
-      theme="monokai"
+      theme="cloud9_day"
       // editorProps={{ $blockScrolling: true }}
     />
   )
