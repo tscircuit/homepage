@@ -20,7 +20,8 @@ const AceEditor = dynamic(
 export const CodeEditor = ({ initialCode }: { initialCode: string }) => {
   return (
     <AceEditor
-      width="100%"
+      // width="100%"
+      height="600"
       mode="tsx"
       defaultValue={initialCode}
       theme="cloud9_day"
