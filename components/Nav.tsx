@@ -15,8 +15,10 @@ export const Nav = () => (
         <Link href="/">Home</Link>
         <Link href="/roadmap">Roadmap</Link>
         <Link href="/getting-started">Getting Started</Link>
-        <Link href="/github">Github</Link>
-        <Link href="/slack">Slack</Link>
+        <Link href="https://github.com/tscircuit/tscircuit">Github</Link>
+        <Link href="https://join.slack.com/t/tscircuit/shared_invite/zt-260m7jjlw-eVLxjoIKsYS_bJK6R8jZHA">
+          Slack
+        </Link>
       </HStack>
     </Container>
   </Box>
