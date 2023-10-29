@@ -3,13 +3,15 @@
     "start": "next dev"
   },
   "dependencies": {
+    "@babel/plugin-transform-react-jsx": "^7.22.15",
+    "@babel/standalone": "^7.23.2",
     "@chakra-ui/pro-theme": "^0.0.65",
     "@chakra-ui/react": "^2.5.5",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
-    "@tscircuit/builder": "^1.0.11",
-    "@tscircuit/pcb-viewer": "^1.1.0",
-    "@tscircuit/react-fiber": "^1.0.1",
+    "@tscircuit/builder": "^1.5.0",
+    "@tscircuit/pcb-viewer": "^1.2.8",
+    "@tscircuit/react-fiber": "^1.0.6",
     "@tscircuit/schematic-viewer": "^0.0.9",
     "email-validator": "^2.0.4",
     "framer-motion": "^10.12.2",

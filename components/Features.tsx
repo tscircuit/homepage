@@ -10,6 +10,7 @@ import {
   Square,
   Stack,
   Text,
+  useBreakpoint,
 } from "@chakra-ui/react"
 import { FiArrowRight } from "react-icons/fi"
 import { BsStars } from "react-icons/bs"
@@ -38,40 +39,33 @@ const features = [
   },
 ]
 
-export const Features = () => (
-  <Container py={14}>
-    <Stack spacing={{ base: "12", md: "16" }}>
+export const Features = () => {
+  const bp = useBreakpoint()
+
+  return (
+    <Container py={14}>
       <Stack
-        direction={{ base: "column", md: "row" }}
-        spacing={{ base: "12", lg: "16" }}
+        direction={bp === "xs" || bp === "sm" ? "column" : "row"}
+        spacing="12"
       >
-        <Stack
-          spacing={{ base: "10", md: "12" }}
-          maxW="xl"
-          justify="center"
-          width="full"
-        >
-          {features.map((feature) => (
-            <Stack key={feature.name} spacing="4" direction="row">
-              <Square
-                size={{ base: "10", md: "12" }}
-                bg="accent"
-                color="inverted"
-                borderRadius="lg"
-              >
-                <Icon as={feature.icon} boxSize={{ base: "5", md: "6" }} />
-              </Square>
-              <Stack
-                spacing={{ base: "4", md: "5" }}
-                pt={{ base: "1.5", md: "2.5" }}
-              >
-                <Stack spacing={{ base: "1", md: "2" }}>
-                  <Text fontSize={{ base: "lg", md: "xl" }} fontWeight="medium">
-                    {feature.name}
-                  </Text>
-                  <Text color="muted">{feature.description}</Text>
-                </Stack>
-                {/* <Button
+        {features.map((feature) => (
+          <Stack key={feature.name} spacing="4" direction="row" w="sm">
+            <Square
+              size={{ base: "10", md: "12" }}
+              bg="accent"
+              color="inverted"
+              borderRadius="lg"
+            >
+              <Icon as={feature.icon} boxSize={{ base: "5", md: "6" }} />
+            </Square>
+            <Stack spacing={{ base: "4", md: "5" }}>
+              <Stack spacing={{ base: "1", md: "2" }}>
+                <Text fontSize={{ base: "lg", md: "xl" }} fontWeight="medium">
+                  {feature.name}
+                </Text>
+                <Text color="muted">{feature.description}</Text>
+              </Stack>
+              {/* <Button
                 variant="link"
                 colorScheme="blue"
                 rightIcon={<FiArrowRight fontSize="1.25rem" />}
@@ -79,14 +73,10 @@ export const Features = () => (
               >
                 Read more
               </Button> */}
-              </Stack>
             </Stack>
-          ))}
-        </Stack>
-        <Box width="full">
-          <CircuitEditor />
-        </Box>
+          </Stack>
+        ))}
       </Stack>
-    </Stack>
-  </Container>
-)
+    </Container>
+  )
+}
