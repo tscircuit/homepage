@@ -3,8 +3,12 @@ import * as React from "react"
 import reactJsx from "@babel/plugin-transform-react-jsx"
 import presetTypescript from "@babel/preset-typescript"
 
-export const renderCircuitCodeToReactNode = (code: string) => {
-  const transformResult = transform(code, {
+import { NextResponse } from "next/server"
+
+export async function POST(req: Request) {
+  const { user_input_code } = await req.json()
+
+  const transformResult = transform(user_input_code, {
     filename: "user_input.ts",
     plugins: [reactJsx],
     presets: [
@@ -18,10 +22,9 @@ export const renderCircuitCodeToReactNode = (code: string) => {
     ],
   })
 
-  // Avoid tree-shaking React
-  React.createElement
-
-  const Circuit = eval(transformResult.code + ";Circuit")
-
-  return Circuit()
+  return NextResponse.json({
+    transformed_code: transformResult.code,
+  })
 }
+
+export const runtime = "nodejs"
