@@ -19,7 +19,7 @@ import PCBLayout from "./PCBLayout"
 
 export const defaultCode = `
 
-export const MyCircuit = () => (
+const MyCircuit = () => (
   <>
     <resistor name="R1" resistance="10 ohm" center={[2, 1]} />
     <capacitor

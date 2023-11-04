@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "next dev"
+    "start": "next dev",
+    "test": "jest"
   },
   "dependencies": {
     "@babel/plugin-transform-react-jsx": "^7.22.15",
