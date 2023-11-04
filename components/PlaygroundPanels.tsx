@@ -4,12 +4,13 @@ import { defaultCode } from "./CircuitEditor"
 import { Schematic } from "@tscircuit/schematic-viewer"
 import { remove_me_prerendered_elements } from "lib/tmp/prerendered-elements"
 import { useMemo, useState } from "react"
+import { renderCircuitCodeToReactNode } from "lib/render-circuit-code-to-react-node"
 
 export const PlaygroundPanels = () => {
   const [code, setCode] = useState(defaultCode)
 
   const children = useMemo(() => {
-    return renderCircuitCodeString(code)
+    return renderCircuitCodeToReactNode(code)
   }, [code])
 
   return (
