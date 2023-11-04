@@ -32,6 +32,7 @@
     "@types/jest": "^29.5.6",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
+    "@types/react-dom": "^18.2.14",
     "esbuild-wasm": "^0.17.19",
     "jest": "^29.7.0",
     "react": "^18.2.0",

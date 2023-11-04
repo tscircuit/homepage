@@ -1,24 +1,31 @@
 import { transform } from "@babel/standalone"
+import * as React from "react"
+import { renderToString } from "react-dom/server"
 import reactJsx from "@babel/plugin-transform-react-jsx"
+import { Schematic } from "@tscircuit/schematic-viewer"
 
 test("should transform tsx to browser compatible code", () => {
   const result = transform(
     `
-  
-var Circuit = () => (
+const Circuit = () => (
   <resistor name="R1" resistance="10 ohm" center={[2, 1]} />
 )
-
-return Circuit
 `.trim(),
     {
-      plugins: ["transform-react-jsx"],
+      plugins: [reactJsx],
     }
   )
 
-  // Let's eval some tscircuit code
-  console.log(result.code)
-  console.log(eval(result.code))
+  // Avoid tree-shaking React
+  React.createElement
 
-  expect(result.code).toBe(0)
+  const Circuit = eval(result.code + ";Circuit")
+
+  expect(
+    renderToString(
+      React.createElement(Schematic, {
+        children: [Circuit()],
+      })
+    )
+  ).toBeDefined()
 })
