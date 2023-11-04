@@ -3,8 +3,15 @@ import { CodeEditor } from "./CodeEditor"
 import { defaultCode } from "./CircuitEditor"
 import { Schematic } from "@tscircuit/schematic-viewer"
 import { remove_me_prerendered_elements } from "lib/tmp/prerendered-elements"
+import { useMemo, useState } from "react"
 
 export const PlaygroundPanels = () => {
+  const [code, setCode] = useState(defaultCode)
+
+  const children = useMemo(() => {
+    return renderCircuitCodeString(code)
+  }, [code])
+
   return (
     <Container>
       <Heading size="sm" fontWeight="semibold" mb={8}>
@@ -19,7 +26,10 @@ export const PlaygroundPanels = () => {
         mb={16}
         direction="row"
       >
-        <CodeEditor initialCode={defaultCode} />
+        <CodeEditor
+          initialCode={defaultCode}
+          onCodeChange={(code) => setCode(code)}
+        />
         <Stack direction="column">
           <Schematic
             style={{
@@ -27,8 +37,9 @@ export const PlaygroundPanels = () => {
               width: 700,
             }}
             showTable={false}
-            elements={remove_me_prerendered_elements}
-          />
+          >
+            {children}
+          </Schematic>
         </Stack>
       </Stack>
     </Container>

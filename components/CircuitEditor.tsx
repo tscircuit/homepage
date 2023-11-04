@@ -89,7 +89,10 @@ export const CircuitEditor = () => {
         </TabList>
         <TabPanels>
           <TabPanel>
-            <CodeEditor initialCode={code} />
+            <CodeEditor
+              initialCode={code}
+              onCodeChange={(code) => setCode(code)}
+            />
           </TabPanel>
           <TabPanel>
             <Box
