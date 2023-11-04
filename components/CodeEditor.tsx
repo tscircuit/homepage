@@ -17,13 +17,22 @@ const AceEditor = dynamic(
   }
 )
 
-export const CodeEditor = ({ initialCode }: { initialCode: string }) => {
+export const CodeEditor = ({
+  initialCode,
+  onCodeChange,
+}: {
+  initialCode: string
+  onCodeChange: (code: string) => any
+}) => {
   return (
     <AceEditor
       // width="100%"
       height="600"
       mode="tsx"
       defaultValue={initialCode}
+      onChange={(code) => {
+        onCodeChange(code)
+      }}
       theme="cloud9_day"
       // editorProps={{ $blockScrolling: true }}
     />
