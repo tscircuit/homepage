@@ -6,9 +6,12 @@ import { remove_me_prerendered_elements } from "lib/tmp/prerendered-elements"
 import { useEffect, useMemo, useReducer, useState } from "react"
 import { renderCircuitCodeToReactNodeBrowser } from "lib/render-circuit-code-to-react-node-browser"
 import { PCBViewer } from "@tscircuit/pcb-viewer"
+import * as exampleCodes from "lib/example-circuits"
 
 export const PlaygroundPanels = () => {
   const [code, setCode] = useState(defaultCode)
+  const [highlightedCircuitName, setHighlightedCircuitName] =
+    useState("Simple Circuit")
   const [circuitComponent, setCircuitComponent] = useState(null)
   const [circuitRenderCount, incCircuitRenderCount] = useReducer(
     (s) => s + 1,
@@ -36,10 +39,28 @@ export const PlaygroundPanels = () => {
         Playground
       </Heading>
       <Stack direction="row" mb={8}>
-        <Button variant="outline">Simple Resistor</Button>
-        <Button variant="solid" bgColor="blue.500" color="white">
-          Simple Circuit
-        </Button>
+        {["Simple Resistor", "Simple Circuit"].map((circuitName) => (
+          <Button
+            variant="outline"
+            onClick={() => {
+              if (circuitName === "Simple Resistor") {
+                setCode(exampleCodes.simpleResistorCode)
+              } else if (circuitName === "Simple Circuit") {
+                setCode(exampleCodes.simpleCircuitCode)
+              }
+              incCodeResetCount()
+              setHighlightedCircuitName(circuitName)
+            }}
+            color={highlightedCircuitName === circuitName ? "white" : ""}
+            bgColor={highlightedCircuitName === circuitName ? "blue.500" : ""}
+            _hover={{
+              color: "white",
+              bgColor: "blue.500",
+            }}
+          >
+            {circuitName}
+          </Button>
+        ))}
       </Stack>
       <Stack
         sx={{
