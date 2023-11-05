@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Stack } from "@chakra-ui/react"
+import { Box, Button, Container, Heading, Stack } from "@chakra-ui/react"
 import { CodeEditor } from "./CodeEditor"
 import { defaultCode } from "./CircuitEditor"
 import { Schematic } from "@tscircuit/schematic-viewer"
@@ -14,6 +14,7 @@ export const PlaygroundPanels = () => {
     (s) => s + 1,
     0
   )
+  const [codeResetCount, incCodeResetCount] = useReducer((s) => s + 1, 0)
   const [circuitErr, setCircuitErr] = useState<null | string>(null)
 
   useEffect(() => {
@@ -34,6 +35,12 @@ export const PlaygroundPanels = () => {
       <Heading size="sm" fontWeight="semibold" mb={8}>
         Playground
       </Heading>
+      <Stack direction="row" mb={8}>
+        <Button variant="outline">Simple Resistor</Button>
+        <Button variant="solid" bgColor="blue.500" color="white">
+          Simple Circuit
+        </Button>
+      </Stack>
       <Stack
         sx={{
           border: "1px solid #ccc",
@@ -63,7 +70,8 @@ export const PlaygroundPanels = () => {
         </Stack>
         <Box display="flex" width="100%" height={400}>
           <CodeEditor
-            initialCode={defaultCode}
+            key={codeResetCount}
+            initialCode={code}
             onCodeChange={(code) => setCode(code)}
           />
         </Box>
