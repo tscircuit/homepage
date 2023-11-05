@@ -2,7 +2,7 @@ export const simpleCircuitCode = `
 
 const Circuit = () => (
   <>
-    <resistor name="R1" resistance="10 ohm" center={[2, 1]} />
+    <resistor name="R1" footprint="0805" resistance="10 ohm" center={[2, 1]} />
     <capacitor
       name="C1"
       capacitance="10 uF"
