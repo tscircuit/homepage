@@ -1,6 +1,8 @@
 import { transform } from "@babel/standalone"
 import * as React from "react"
+// @ts-ignore
 import reactJsx from "@babel/plugin-transform-react-jsx"
+// @ts-ignore
 import presetTypescript from "@babel/preset-typescript"
 
 export const renderCircuitCodeToReactNode = (code: string) => {
