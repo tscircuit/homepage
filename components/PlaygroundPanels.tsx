@@ -7,9 +7,10 @@ import { useEffect, useMemo, useReducer, useState } from "react"
 import { renderCircuitCodeToReactNodeBrowser } from "lib/render-circuit-code-to-react-node-browser"
 import { PCBViewer } from "@tscircuit/pcb-viewer"
 import * as exampleCodes from "lib/example-circuits"
+import { ErrorBoundary } from "react-error-boundary"
 
 export const PlaygroundPanels = () => {
-  const [code, setCode] = useState(defaultCode)
+  const [code, setCode] = useState(exampleCodes.simpleCircuitCode)
   const [highlightedCircuitName, setHighlightedCircuitName] =
     useState("Simple Circuit")
   const [circuitComponent, setCircuitComponent] = useState(null)
@@ -73,20 +74,32 @@ export const PlaygroundPanels = () => {
       >
         <Stack direction="row">
           {circuitComponent && (
-            <Schematic
-              style={{
-                height: 600,
-                width: 700,
-              }}
-              showTable={false}
+            <ErrorBoundary
+              key="sch1"
+              fallback={<Box height={600}>Failed to render schematic</Box>}
             >
-              {circuitComponent}
-            </Schematic>
+              <Schematic
+                style={{
+                  height: 600,
+                  width: 700,
+                }}
+                showTable={false}
+              >
+                {circuitComponent}
+              </Schematic>
+            </ErrorBoundary>
           )}
           {circuitComponent && (
-            <Box backgroundColor="black" flexGrow={1} height="600px">
-              <PCBViewer key={circuitRenderCount}>{circuitComponent}</PCBViewer>
-            </Box>
+            <ErrorBoundary
+              key={`pcb${circuitRenderCount}`}
+              fallback={<Box height={600}>Failed to render pcb</Box>}
+            >
+              <Box backgroundColor="black" flexGrow={1} height="600px">
+                <PCBViewer key={circuitRenderCount}>
+                  {circuitComponent}
+                </PCBViewer>
+              </Box>
+            </ErrorBoundary>
           )}
         </Stack>
         <Box display="flex" width="100%" height={400}>
