@@ -42,6 +42,7 @@ export const PlaygroundPanels = () => {
       <Stack direction="row" mb={8}>
         {["Simple Resistor", "Simple Circuit"].map((circuitName) => (
           <Button
+            key={circuitName}
             variant="outline"
             onClick={() => {
               if (circuitName === "Simple Resistor") {
