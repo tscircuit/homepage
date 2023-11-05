@@ -1,3 +1,5 @@
+"use client"
+
 import { Box, Container, HStack, Link } from "@chakra-ui/react"
 
 export const Nav = () => (
@@ -19,6 +21,7 @@ export const Nav = () => (
         <Link href="https://join.slack.com/t/tscircuit/shared_invite/zt-260m7jjlw-eVLxjoIKsYS_bJK6R8jZHA">
           Slack
         </Link>
+        <Link href="/changelog">Changelog</Link>
       </HStack>
     </Container>
   </Box>
