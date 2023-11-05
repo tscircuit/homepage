@@ -24,13 +24,14 @@ export const CodeEditor = ({
 }) => {
   return (
     <AceEditor
-      // width="100%"
+      width="100%"
       height="600"
       mode="tsx"
       defaultValue={initialCode}
       onChange={(code) => {
         onCodeChange(code)
       }}
+      fontSize={18}
       theme="cloud9_day"
       // editorProps={{ $blockScrolling: true }}
     />
