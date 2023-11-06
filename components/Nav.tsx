@@ -22,6 +22,7 @@ export const Nav = () => (
           Slack
         </Link>
         <Link href="/changelog">Changelog</Link>
+        <Link href="/get-involved">Get Involved</Link>
       </HStack>
     </Container>
   </Box>

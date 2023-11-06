@@ -10,39 +10,12 @@ import {
 } from "@chakra-ui/react"
 import { BsGithub } from "react-icons/bs"
 import CommitBarChart from "./CommitBarChart"
+import type { OverviewJson } from "lib/types/overview-json"
 
-type OverviewJson = {
-  commit_graph_starting_date: string
-  commit_graph_ending_date: string
-  /**
-   * Each number represents the number of commits on that day
-   */
-  commit_graph: number[]
-
-  version_released_on_date: {
-    [date: string]: {
-      [repo: string]: string
-    }
-  }
-
-  /**
-   * The most recent 1,000 commits.
-   * NOTE: non-meaningful commits messages are filtered out, e.g. wherever the
-   * message contains "wip"
-   */
-  recent_commits: Array<{
-    repo: string // "org/repo-name"
-    commit_url: string
-    message: string
-    date: string // "yyyy-mm-dd"
-    author: string
-  }>
-}
-
-function chunkBy<T, K>(
+function chunkByMap<T, K>(
   array: T[],
   discriminator: (element: T) => K
-): Array<T[]> {
+): Map<K, T[]> {
   const chunkMap = new Map<K, T[]>()
 
   for (const element of array) {
@@ -55,7 +28,14 @@ function chunkBy<T, K>(
     }
   }
 
-  return Array.from(chunkMap.values())
+  return chunkMap
+}
+
+function chunkBy<T, K>(
+  array: T[],
+  discriminator: (element: T) => K
+): Array<T[]> {
+  return Array.from(chunkByMap(array, discriminator).values())
 }
 
 export const Changelog = ({ changelog }: { changelog: OverviewJson }) => {
@@ -67,6 +47,11 @@ export const Changelog = ({ changelog }: { changelog: OverviewJson }) => {
   const commitsByDayRepo = chunkBy(
     changelog.recent_commits,
     (c) => `${c.date}-${c.repo}`
+  )
+
+  const closedIssuesByDayRepo = chunkByMap(
+    changelog.recent_closed_issues,
+    (c) => `${c.closed_at}-${c.repo}`
   )
 
   return (
@@ -118,6 +103,26 @@ export const Changelog = ({ changelog }: { changelog: OverviewJson }) => {
                         )}
                       </HStack>
                     </Heading>
+                    {(closedIssuesByDayRepo.get(`${date}-${repo}`) ?? []).map(
+                      (issue) => (
+                        <HStack key={`${issue.created_at}-${issue.repo}`}>
+                          <Box flexGrow={1}>
+                            <Link href={issue.issue_url}>
+                              Issue Closed: {issue.title}
+                            </Link>
+                          </Box>
+                          <Box>
+                            <Link
+                              display="flex"
+                              href={`https://github.com/${issue.user}`}
+                              color="gray.500"
+                            >
+                              @{issue.user}
+                            </Link>
+                          </Box>
+                        </HStack>
+                      )
+                    )}
                     {commitsOnRepo.map((commit) => (
                       <HStack key={`${commit.date}-${commit.repo}`}>
                         <Box flexGrow={1}>
