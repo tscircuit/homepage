@@ -127,6 +127,7 @@ export const Changelog = ({ changelog }: { changelog: OverviewJson }) => {
                           <Link
                             display="flex"
                             href={`https://github.com/${commit.author}`}
+                            color="gray.500"
                           >
                             @{commit.author}
                           </Link>
