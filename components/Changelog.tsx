@@ -19,6 +19,12 @@ type OverviewJson = {
    */
   commit_graph: number[]
 
+  version_released_on_date: {
+    [date: string]: {
+      [repo: string]: string
+    }
+  }
+
   /**
    * The most recent 1,000 commits.
    * NOTE: non-meaningful commits messages are filtered out, e.g. wherever the
@@ -69,49 +75,68 @@ export const Changelog = ({ changelog }: { changelog: OverviewJson }) => {
       <CommitBarChart height={200} points={changelog.commit_graph} />
       {dates.map((date) => {
         return (
-          <>
-            <Heading
-              size="sm"
-              mt={8}
-              mb={4}
-              pb={2}
-              sx={{ borderBottom: "1px solid", borderBottomColor: "gray.200" }}
-            >
-              {date}
+          <Box
+            sx={{
+              borderLeft: "4px solid",
+              borderLeftColor: "blue.100",
+            }}
+          >
+            <Heading size="sm" mt={8} mb={4}>
+              <Box
+                pl={2}
+                pr={2}
+                pb={1}
+                pt={1}
+                bgColor="blue.400"
+                style={{ color: "#fff" }}
+                display="inline-flex"
+              >
+                {date}
+              </Box>
             </Heading>
             {commitsByDayRepo
               .filter((c) => c[0].date === date)
-              .map((commitsOnRepo) => (
-                <>
-                  <Heading size="xs" mt={6} mb={4}>
-                    <Link
-                      sx={{ minWidth: 150 }}
-                      display="flex"
-                      alignItems="center"
-                      href={`https://github.com/${commitsOnRepo[0].repo}`}
-                    >
-                      <BsGithub style={{ marginRight: 4 }} />{" "}
-                      {commitsOnRepo[0].repo}
-                    </Link>
-                  </Heading>
-                  {commitsOnRepo.map((commit) => (
-                    <HStack key={`${commit.date}-${commit.repo}`}>
-                      <Box flexGrow={1}>
-                        <Link href={commit.commit_url}>{commit.message}</Link>
-                      </Box>
-                      <Box>
+              .map((commitsOnRepo) => {
+                const repo = commitsOnRepo[0].repo
+                const versionReleasedOnDay =
+                  changelog.version_released_on_date?.[date]?.[repo]
+                return (
+                  <Box ml={4} pb={8}>
+                    <Heading size="xs" mt={6} mb={4}>
+                      <HStack>
                         <Link
                           display="flex"
-                          href={`https://github.com/${commit.author}`}
+                          alignItems="center"
+                          href={`https://github.com/${repo}`}
                         >
-                          @{commit.author}
+                          <BsGithub style={{ marginRight: 4 }} /> {repo}
                         </Link>
-                      </Box>
-                    </HStack>
-                  ))}
-                </>
-              ))}
-          </>
+                        {versionReleasedOnDay && (
+                          <Box color="gray.500" ml={2}>
+                            {versionReleasedOnDay}
+                          </Box>
+                        )}
+                      </HStack>
+                    </Heading>
+                    {commitsOnRepo.map((commit) => (
+                      <HStack key={`${commit.date}-${commit.repo}`}>
+                        <Box flexGrow={1}>
+                          <Link href={commit.commit_url}>{commit.message}</Link>
+                        </Box>
+                        <Box>
+                          <Link
+                            display="flex"
+                            href={`https://github.com/${commit.author}`}
+                          >
+                            @{commit.author}
+                          </Link>
+                        </Box>
+                      </HStack>
+                    ))}
+                  </Box>
+                )
+              })}
+          </Box>
         )
       })}
     </Container>
