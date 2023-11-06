@@ -1,0 +1,25 @@
+# Overview
+
+tscircuit is an ecosystem of tools for building circuits in React. In this guide,
+we'll walk through the basics of running tscircuit. If you have any trouble,
+[ask for help in the Slack channel](https://join.slack.com/t/tscircuit/shared_invite/zt-260m7jjlw-eVLxjoIKsYS_bJK6R8jZHA)
+
+# Your First Circuit
+
+This section is still in progress!
+
+# Concepts for Developers
+
+Here are some helpful concepts if you're working on tscircuit as a developer.
+
+* **tscircuit soup**: An intermediate JSON format that tscircuit typescript code
+  compiles to. It contains all the elements of the circuit in their fully
+  computed positions
+  
+  
+## more on tscircuit soup
+
+Most of the complex logic in tscircuit doesn't involve React at all. In the
+[tscircuit/builder repo](https://github.com/tscircuit/builder) you can build
+up circuits using a builder pattern and compile them to tscircuit soup. This
+computes all routes, layouts and positions for both schematics and PCBs.
