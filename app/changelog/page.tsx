@@ -8,6 +8,7 @@ export default () => {
     <>
       <Nav />
       <Background>
+        {/* @ts-ignore */}
         <ChangelogWithData />
       </Background>
     </>
