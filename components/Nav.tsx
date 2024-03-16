@@ -15,6 +15,7 @@ export const Nav = () => (
         }}
       >
         <Link href="/">Home</Link>
+        <Link href="https://registry.tscircuit.com">Registry</Link>
         <Link href="/roadmap">Roadmap</Link>
         <Link href="/getting-started">Getting Started</Link>
         <Link href="https://github.com/tscircuit/tscircuit">Github</Link>
